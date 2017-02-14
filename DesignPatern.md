@@ -89,21 +89,21 @@ ConcreteProduct 对象。<br>
 ![](pic1.png)
 
 ### 例子
-- product<br>
+#### product
 <pre><code>
 public interface Work {
     void doWork();
 }
 </code></pre>
 
-- ConcreteProduct<br>
+#### ConcreteProduct
+
 <pre><code>
 public class StudentWork implements Work {
     public void doWork() {
         System.out.println("学生做作业!");
     }
 }
-
 public class TeacherWork implements Work {
     public void doWork() {
         System.out.println("老师审批作业!");
@@ -111,14 +111,14 @@ public class TeacherWork implements Work {
 }
 </code></pre>
 
-- Creator
+#### Creator
 <pre><code>
 public interface IWorkFactory {
     Work getWork();
 }
 </code></pre>
 
-- ConcreteCreator
+#### ConcreteCreator
 <pre><code>
 public class StudentWorkFactory implements IWorkFactory {
     public Work getWork() {
@@ -132,7 +132,7 @@ public class TeacherWorkFactory implements IWorkFactory {
 }
 </code></pre>
 
-- Test
+#### Test
 <pre><code>
 public class Test {
     public static void main(String[] args) {
@@ -144,7 +144,7 @@ public class Test {
 }
 </code></pre>
 
-- result
+#### result
 > 学生做作业!<br>
 > 老师审批作业!
 
