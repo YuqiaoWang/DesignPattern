@@ -86,6 +86,69 @@ ConcreteProduct 对象。<br>
 重定义工厂方法以返回一个ConcreteProduct 实例。
 
 ### 类图
+![](pic1.png)
+
+### 例子
+- product<br>
+<pre><code>
+public interface Work {
+    void doWork();
+}
+</code></pre>
+
+- ConcreteProduct<br>
+<pre><code>
+public class StudentWork implements Work {
+    public void doWork() {
+        System.out.println("学生做作业!");
+    }
+}
+
+public class TeacherWork implements Work {
+    public void doWork() {
+        System.out.println("老师审批作业!");
+    }
+}
+</code></pre>
+
+- Creator
+<pre><code>
+public interface IWorkFactory {
+    Work getWork();
+}
+</code></pre>
+
+- ConcreteCreator
+<pre><code>
+public class StudentWorkFactory implements IWorkFactory {
+    public Work getWork() {
+        return new StudentWork();
+    }
+}
+public class TeacherWorkFactory implements IWorkFactory {
+    public Work getWork() {
+        return new TeacherWork();
+    }
+}
+</code></pre>
+
+- Test
+<pre><code>
+public class Test {
+    public static void main(String[] args) {
+        IWorkFactory studentWorkFactory = new StudentWorkFactory();
+        studentWorkFactory.getWork().doWork();
+        IWorkFactory teacherWorkFactory = new TeacherWorkFactory();
+        teacherWorkFactory.getWork().doWork();
+    }
+}
+</code></pre>
+
+- result
+> 学生做作业!<br>
+> 老师审批作业!
+
+
 
 
 
