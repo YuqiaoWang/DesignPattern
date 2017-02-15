@@ -173,6 +173,99 @@ public class Test {
 仅使用由 AbstractFactory 和 AbstractProduct 类声明的接口
 
 ### 类图
+![](pic2.png)
+
+- 优点： 对产品的增加支持 OCP 原则
+- 缺点： 对产品系列的增加不支持 OCP 原则
+
+### 例子
+#### AbstractFactory
+<pre><code>
+public interface IAnimalFactory {
+    ICat createCat();
+    IDog createDog();
+}
+</code></pre>
+
+#### ConcreteFactory
+<pre><code>
+public class BlackAnimalFactory implements IAnimalFactory {
+    public ICat createCat() {
+        reture new BlackCat();
+    }
+    public IDog createDog() {
+        return new BlackDog();
+    }
+}
+
+public class WhiteAnimalFactory implements IAnimalFactory {
+    public ICat createCat() {
+        return new WhiteCat();
+    }
+    public IDog createDog() {
+        return new WhiteDog();
+    }
+}
+</code></pre>
+
+#### AbstractProduct
+<pre><code>
+public interface ICat {
+    void eat();
+}
+public interface IDog {
+    void eat();
+}
+</code></pre>
+
+#### Concreteproduct
+<pre><code>
+public class BlackCat implements ICat {
+    public void eat() {
+        System.out.println("The black cat is eating!");
+    }
+}
+public class WhiteCat implements ICat {
+    public void eat() {
+        System.out.println("The white cat is eating!");
+    }
+}
+public class BlackDog implements IDog {
+    public void eat() {
+        System.out.println("The black dog is eating");
+    }
+}
+public class WhiteDog implements IDog {
+    public void eat() {
+        System.out.println("The white dog is eating!");
+    }
+}
+</code></pre>
+
+#### Client
+<pre><code>
+public static void main(String[] args) {
+    IAnimalFactory blackAnimalFactory = new BlackAnimalFactory();
+    ICat blackCat = blackAnimalFactory.createCat();
+    blackCat.eat();
+    IDog blackDog = blackAnimalFactory.createDog();
+    blackDog.eat();
+    IAnimalFactory whiteAnimalFactory = new WhiteAnimalFactory();
+    ICat whiteCat = whiteAnimalFactory.createCat();
+    whiteCat.eat();
+    IDog whiteDog = whiteAnimalFactory.createDog();
+    whiteDog.eat();
+}
+</code></pre>
+
+#### result
+> The black cat is eating!<br>
+> The black dog is eating!<br>
+> The white cat is eating!<br>
+> The white dog is eating!<br>
+
+
+
 
 
 
