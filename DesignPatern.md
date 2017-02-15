@@ -264,7 +264,29 @@ public static void main(String[] args) {
 > The white cat is eating!<br>
 > The white dog is eating!<br>
 
+## 1.1.3 创造者模式
 
+将一个复杂对象的构成与它的表示分离，使同样的构建过程可以创建不同的
+表示。
+### 适用性
+1. 当创建复杂对象的算法应该独立于该对象的组成部分以及它们的装配方式时。
+2. 当构造过程必须允许被构造的对象有不同的表示时。
+
+### 参与者
+1. Builder<br>
+为创建一个Product 对象的各个部件指定抽象接口。
+2. ConcreateBuilder<br>
+实现Builder 的接口以构造和装配该产品的各个部件。<br>
+定义并明确它所创建的表示。<br>
+提供一个检索产品的接口。
+3. Director<br>
+构造一个使用Builder 接口的对象。
+4. Product<br>
+表示被构造的复杂对象。ConcreteBuilder 创建该产品的内部表示并定义它
+的装配过程。<br>
+包含定义组成部件的类，包括将这些部件装配成最终产品的接口。
+
+### 类图
 
 
 
