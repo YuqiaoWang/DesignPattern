@@ -293,6 +293,98 @@ public static void main(String[] args) {
 建造模式可以强制实行一种分步进行地建造步骤。
 
 ### 例子
+#### Builder
+<pre><code>
+public interface PersonBuilder {
+    void buildHead();
+    void buildBody();
+    void buildFoot();
+    Person buildPerson();
+}
+</code></pre>
+
+#### ConcreateBuilder
+<pre><code>
+public class ManBuilder implements PersonBuilder {
+    Person person;
+    public ManBuilder() {
+        person = new Man();
+    }
+    publoc void buildBody() {
+        person.setBody("建造男人的身体");
+    }
+    public void buildFoot() {
+        person.setFoot("建造男人的脚");
+    }
+    public void buildHead() {
+        person.setHead("建造男人的头");
+    }
+    public Person buildPerson() {
+        reture person;
+    }
+}
+</code></pre>
+
+#### Director
+<pre><code>
+public class PersonDirector {
+    public Person constructPerson(PersonBuilder pb) {
+        pb.buildHead();
+        pb.buildBody();
+        pb.buildFoot();
+        return pb.buildPerson();
+    }
+}
+</code></pre>
+
+#### Product
+<pre><code>
+public class Person {
+    private String head;
+    private String body;
+    private String foot;
+    public String getHead() {
+        return head;
+    }
+    public void setHead(String head) {
+        this.head = head;
+    }
+    public String getBody() {
+        return body;
+    }
+    public void setBody(String body) {
+        this.body = body;
+    }
+    public String getFoot() {
+        return foot;
+    }
+    public void setFoot(String foot) {
+    this.foot = foot;
+    }
+}
+
+public class Man extends Person {
+}
+</code></pre>
+
+#### Test
+<pre><code>
+public class Test{
+    public static void main(String[] args) {
+        PersonDirector pd = new PersonDirector();
+        Person person = pd.constructPerson(new ManBuilder());
+        System.out.println(person.getBody());
+        System.out.println(person.getFoot());
+        System.out.println(person.getHead());
+    }
+}
+</code></pre>
+
+#### result
+>建造男人的身体<br>
+>建造男人的脚<br>
+>建造男人的头<br>
+
 
 
 
